@@ -31,7 +31,10 @@ void game_command_back(Game *game);
 /**
    Game interface implementation
 */
-
+/*
+  Con un bucle for va creando espacios (llamando a la estructura espacios dentro de game). 
+  Al salir crea un jugador y un objeto vacio y returnea OK.
+*/
 STATUS game_create(Game *game)
 {
   int i;
@@ -47,7 +50,10 @@ STATUS game_create(Game *game)
 
   return OK;
 }
-
+/*
+  Mira si hay errores en la apertura del puntero y del archivo. Si no hay llama a otra 
+  funcion que crea el espacio 1 y situa al jugador y al objeto dentro y returnea OK
+*/
 STATUS game_create_from_file(Game *game, char *filename)
 {
 
@@ -63,7 +69,10 @@ STATUS game_create_from_file(Game *game, char *filename)
 
   return OK;
 }
-
+/*
+  Con un bucle for va destruyendo cada uno de los espacios 
+  llamando a la funcion destruir espacio
+*/
 STATUS game_destroy(Game *game)
 {
   int i = 0;
@@ -110,7 +119,11 @@ Id game_get_space_id_at(Game *game, int position)
 
   return space_get_id(game->spaces[position]);
 }
-
+/*
+  Si no hay ID asociada return NULL. Si no, entra en un bucle (que se acaba cuando no hay
+  mas posibles espacios o cuando el espacio es nulo). Si el Id es igual a otro (obtenido
+  con otra funcion) el Id returnea el espacio que quieres.
+*/
 Space *game_get_space(Game *game, Id id)
 {
   int i = 0;
@@ -130,7 +143,10 @@ Space *game_get_space(Game *game, Id id)
 
   return NULL;
 }
-
+/*
+  Si no hay Id identificada devuele ERROR. Si esta identificada la iguala a un puntero 
+  a una estructura de tipo game y devuelve OK.
+*/
 STATUS game_set_player_location(Game *game, Id id)
 {
 
@@ -140,8 +156,13 @@ STATUS game_set_player_location(Game *game, Id id)
   }
 
   game->player_location = id;
-}
 
+  return ok;
+}
+/*
+  Si no hay Id identificada devuele ERROR. Si esta identificada la iguala a un puntero 
+  a una estructura de tipo game y devuelve OK.
+*/
 STATUS game_set_object_location(Game *game, Id id)
 {
 
@@ -166,7 +187,11 @@ Id game_get_object_location(Game *game)
 {
   return game->object_location;
 }
+/*
+  Guarda en una variable el ultimo comando leido y con un swith 
+  lo manda a la funcion que corresponda
 
+*/
 STATUS game_update(Game *game, T_Command cmd)
 {
   game->last_cmd = cmd;
@@ -200,7 +225,9 @@ T_Command game_get_last_command(Game *game)
 {
   return game->last_cmd;
 }
-
+/*
+  enseña por pantalla los datos del juego
+*/
 void game_print_data(Game *game)
 {
   int i = 0;
