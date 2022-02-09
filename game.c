@@ -157,7 +157,7 @@ STATUS game_set_player_location(Game *game, Id id)
 
   game->player_location = id;
 
-  return ok;
+  return OK;
 }
 /*
   Si no hay Id identificada devuele ERROR. Si esta identificada la iguala a un puntero 
