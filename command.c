@@ -13,7 +13,14 @@
 #include "command.h"
 
 #define CMD_LENGHT 30
+/*
+  
+  Asocias a cada comando una letras. Puedes entrar al bucle if si pulas e, n o b. 
+  Dentro del bucle va comparando con un bucle while para averiguar cual es el comando 
+  (vale la lecheo la palabra), si no es ese la i aumenta (y hara lo mismo hhasta que 
+  salga del bucle) y si es ese le returnea (restandole 1 porque empiezas por -1).
 
+*/
 char *cmd_to_str[N_CMD]
 [N_CMDT] = {{"", "No command"},
 			{"", "Unknown"},

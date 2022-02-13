@@ -17,7 +17,10 @@
 int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name);
 void game_loop_run(Game game, Graphic_engine *gengine);
 void game_loop_cleanup(Game game, Graphic_engine *gengine);
-
+/*
+   Si el argumento mandado al main es mayor que 2 y la funcion loop_init es distinta
+   de 0 el juego se crea y ya a las otras dos funciones.
+*/
 int main(int argc, char *argv[])
 {
   Game game;
@@ -37,7 +40,10 @@ int main(int argc, char *argv[])
 
   return 0;
 }
-
+/*
+  Si no hay fallos en la apertura del archivo y del puntero a la funcion que crea la 
+  grafica return 0.
+*/
 int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name)
 {
   if (game_create_from_file(game, file_name) == ERROR)
@@ -55,7 +61,11 @@ int game_loop_init(Game *game, Graphic_engine **gengine, char *file_name)
 
   return 0;
 }
+/*
+  Mientras que el comando tecleado no sea EXIT y la funcion game_is_over sea distinta 
+  de 0 iniciara el juego llamando a diferentes funciones.
 
+*/
 void game_loop_run(Game game, Graphic_engine *gengine)
 {
   T_Command command = NO_CMD;
@@ -67,7 +77,9 @@ void game_loop_run(Game game, Graphic_engine *gengine)
     game_update(&game, command);
   }
 }
-
+/*
+  Destruye el juego y la grafica
+*/
 void game_loop_cleanup(Game game, Graphic_engine *gengine)
 {
   game_destroy(&game);

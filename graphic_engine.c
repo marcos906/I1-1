@@ -23,7 +23,11 @@ struct _Graphic_engine
 {
   Area *map, *descript, *banner, *help, *feedback;
 };
-
+/*
+  Si no hay problemas al abrir el puntero reserva memoria dinamica a la estructura
+  llamada ge y crea nuevas areas en la pantalla para cada una de las partes de la 
+  estructura
+*/
 Graphic_engine *graphic_engine_create()
 {
   static Graphic_engine *ge = NULL;
@@ -44,7 +48,9 @@ Graphic_engine *graphic_engine_create()
 
   return ge;
 }
-
+/*
+  Va llamando a funciones que destruyen cada parte de la pantalla creada
+*/
 void graphic_engine_destroy(Graphic_engine *ge)
 {
   if (!ge)
@@ -60,6 +66,10 @@ void graphic_engine_destroy(Graphic_engine *ge)
   free(ge);
 }
 
+/*
+  Va mirando las Id de la ID actual, la anterior, la siguiente y donde esta el objeto
+  y lo va dibujando
+*/
 void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 {
   Id id_act = NO_ID, id_back = NO_ID, id_next = NO_ID, obj_loc = NO_ID;
