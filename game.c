@@ -84,7 +84,11 @@ STATUS game_destroy(Game *game)
 
   return OK;
 }
-
+/*
+  Primero compreba si el puntero a la estructura space funciona correctamente.
+  Despues va recorriendo todos los espacios del juego para ver si estan todos creados.
+  Si estan todos creados return ERROR y si no le crea en la siguiente posicion (i).
+*/
 STATUS game_add_space(Game *game, Space *space)
 {
   int i = 0;
@@ -108,7 +112,10 @@ STATUS game_add_space(Game *game, Space *space)
 
   return OK;
 }
-
+/*
+   Si la posicion no existe (es menor que 0 o es mayor que el numero de espacios 
+   posibles) return que no hay ID. Si no llama a la funcion get Id para obtenerla.
+*/
 Id game_get_space_id_at(Game *game, int position)
 {
 
@@ -220,7 +227,9 @@ STATUS game_update(Game *game, T_Command cmd)
 
   return OK;
 }
-
+/*
+  Obtiene el ultimo comando utilizado
+*/
 T_Command game_get_last_command(Game *game)
 {
   return game->last_cmd;
