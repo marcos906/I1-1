@@ -13,7 +13,12 @@
 #include <string.h>
 #include "game_reader.h"
 
+/*
+    
+    Mira si hay errores en la apertura del puntero y del archivo. Si no hay llama a otra 
+  funcion que crea el espacio 1 y situa al jugador y al objeto dentro y returnea OK
 
+*/
 STATUS game_load_spaces(Game *game, char *filename)
 {
   FILE *file = NULL;
@@ -76,6 +81,11 @@ STATUS game_load_spaces(Game *game, char *filename)
 
   return status;
 }
+
+/*
+  Crea el juego en la file
+*/
+
 STATUS game_create_from_file(Game *game, char *filename)
 {
 

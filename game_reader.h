@@ -1,5 +1,5 @@
 /** 
- * @brief It defines the game interface
+ * @brief Define las funciones utilizadas en el .h
  * 
  * @file game_reader.h
  * @author Hector Labrador Gomez y Guillermo Fernandez Larrubia
@@ -17,9 +17,12 @@
         @Autor: Profesores PPROG
         @Paramentros: Estructura game y archivo.
         @Return: Ok o NULL
-        @Descripcion: Situa al objeto y jugador en el espacio 1    
-  Mira si hay errores en la apertura del puntero y del archivo. Si no hay llama a otra 
-  funcion que crea el espacio 1 y situa al jugador y al objeto dentro y returnea OK
+        @Descripcion: Crea el juego en la file
+    STATUS game_load_spaces(Game *game, char *filename)  
+        @Autor: Profesores PPROG
+        @Paramentros: Estructura game y archivo.
+        @Return: Ok o NULL
+        @Descripcion: Situa al objeto y jugador en el espacio 1 
 
 */
 STATUS game_create_from_file(Game *game, char *filename);
