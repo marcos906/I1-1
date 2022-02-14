@@ -78,7 +78,6 @@ typedef struct _Game
 
 */
 STATUS game_create(Game *game);
-STATUS game_create_from_file(Game *game, char *filename);
 STATUS game_update(Game *game, T_Command cmd);
 STATUS game_destroy(Game *game);
 BOOL game_is_over(Game *game);

@@ -176,7 +176,7 @@ void graphic_engine_paint_game(Graphic_engine *ge, Game *game)
 
     if (id_left != NO_ID)
     {
-      sprintf(str, "        <");
+      sprintf(str, "        ^");
       screen_area_puts(ge->map, str);
       sprintf(str, "  +-----------+");
       screen_area_puts(ge->map, str);
