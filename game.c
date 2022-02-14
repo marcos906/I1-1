@@ -354,11 +354,57 @@ void game_command_drop(Game *game)
 }
 void game_command_right(Game *game)
 {
-  
+    int i = 0;
+  Id current_id = NO_ID;
+  Id space_id = NO_ID;
+
+  space_id = game_get_player_location(game);
+
+  if (NO_ID == space_id)
+  {
+    return;
+  }
+
+  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+  {
+    current_id = space_get_id(game->spaces[i]);
+    if (current_id == space_id)
+    {
+      current_id = space_get_east(game->spaces[i]);
+      if (current_id != NO_ID)
+      {
+        game_set_player_location(game, current_id);
+      }
+      return;
+    }
+  }
 }
 void game_command_left(Game *game)
 {
-  
+    int i = 0;
+  Id current_id = NO_ID;
+  Id space_id = NO_ID;
+
+  space_id = game_get_player_location(game);
+
+  if (NO_ID == space_id)
+  {
+    return;
+  }
+
+  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
+  {
+    current_id = space_get_id(game->spaces[i]);
+    if (current_id == space_id)
+    {
+      current_id = space_get_west(game->spaces[i]);
+      if (current_id != NO_ID)
+      {
+        game_set_player_location(game, current_id);
+      }
+      return;
+    }
+  }
 }
 STATUS game_load_spaces(Game *game, char *filename)
 {
