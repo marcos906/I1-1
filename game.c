@@ -13,7 +13,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "game.h"
-#include "game_reader.h"
+
 
 /**
    Private functions

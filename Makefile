@@ -1,6 +1,6 @@
 All: I1 clean programa
-I1: command.o game_loop.o game.o graphic_engine.o space.o
-	@gcc -o I1 command.o game_loop.o game.o graphic_engine.o space.o libscreen.a
+I1: command.o game_loop.o game.o graphic_engine.o space.o game_reader.o
+	@gcc -o I1 command.o game_loop.o game.o graphic_engine.o space.o game_reader.o libscreen.a
 	
 command.o: command.c command.h
 	@gcc -c -Wall command.c
@@ -16,6 +16,9 @@ graphic_engine.o: graphic_engine.c libscreen.h graphic_engine.h command.h space.
 
 space.o: space.c space.h
 	@gcc -c -Wall space.c
+
+game_reader.o: game_reader.c game.h game_reader.h
+	@gcc -c -Wall game_reader.c
 	
 programa: I1
 	./I1 hormiguero.dat
