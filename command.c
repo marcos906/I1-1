@@ -26,7 +26,11 @@ char *cmd_to_str[N_CMD]
 			{"", "Unknown"},
 			{"e", "Exit"},
 			{"n", "Next"},
-			{"b", "Back"}};
+			{"b", "Back"},
+      {"t", "Take"},
+			{"d", "Drop"}
+      {"r", "Right"},
+			{"l", "Left"}};
 
 T_Command command_get_user_input()
 {

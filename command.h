@@ -12,7 +12,7 @@
 #define COMMAND_H
 
 #define N_CMDT 2
-#define N_CMD 5
+#define N_CMD 9
 
 /*
   Dia 9/02/22
@@ -38,7 +38,11 @@ typedef enum enum_Command {
   UNKNOWN,
   EXIT,
   NEXT,
-  BACK} T_Command;
+  BACK,
+  TAKE,
+  DROP,
+  RIGHT,
+  LEFT} T_Command;
 
 T_Command command_get_user_input();
 

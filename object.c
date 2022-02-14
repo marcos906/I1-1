@@ -69,7 +69,7 @@ Id object_get_id(Object* object) {
 /*
     Pone el nombre del objeto
   */
-STATUS space_set_name(Object* space, char* name) {
+STATUS object_set_name(Object* space, char* name) {
   if (!space || !name) {
     return ERROR;
   }

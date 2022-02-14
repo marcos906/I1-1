@@ -27,6 +27,10 @@ void game_command_unknown(Game *game);
 void game_command_exit(Game *game);
 void game_command_next(Game *game);
 void game_command_back(Game *game);
+void game_command_take(Game *game);
+void game_command_drop(Game *game);
+void game_command_right(Game *game);
+void game_command_left(Game *game);
 
 /**
    Game interface implementation
@@ -220,6 +224,22 @@ STATUS game_update(Game *game, T_Command cmd)
     case BACK:
       game_command_back(game);
       break;
+    
+    case TAKE:
+      game_command_take(game);
+      break;
+
+    case DROP:
+      game_command_drop(game);
+      break;
+
+    case RIGHT:
+      game_command_right(game);
+      break;
+
+    case LEFT:
+      game_command_left(game);
+      break;
 
     default:
       break;
@@ -324,7 +344,22 @@ void game_command_back(Game *game)
     }
   }
 }
-
+void game_command_take(Game *game)
+{
+  
+}
+void game_command_drop(Game *game)
+{
+  
+}
+void game_command_right(Game *game)
+{
+  
+}
+void game_command_left(Game *game)
+{
+  
+}
 STATUS game_load_spaces(Game *game, char *filename)
 {
   FILE *file = NULL;
