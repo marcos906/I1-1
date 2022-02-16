@@ -22,7 +22,7 @@ typedef struct _Player Player;
   * @param id the identification number for the new player
   * @return a new player, initialized
   */
-Player* space_create(Id id);
+Player* player_create(Id id);
 
 
 /**
