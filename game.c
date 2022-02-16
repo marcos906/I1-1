@@ -282,60 +282,34 @@ void game_command_next(Game *game)
   Id current_id = NO_ID;
   Id space_id = NO_ID;
 
-  space_id = game_get_player_location(game);
-  if (space_id == NO_ID)
-  {
+  Id loc = player_get_location(game->bob);
+  Space *s = game_get_space(game, loc);
+  Id sur = space_get_south(s);
+  if (sur == NO_ID) 
     return;
-  }
+  player_set_location(game->bob, sur);
 
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id)
-    {
-      current_id = space_get_south(game->spaces[i]);
-      if (current_id != NO_ID)
-      {
-        game_set_player_location(game, current_id);
-      }
-      return;
-    }
-  }
 }
 
 void game_command_back(Game *game)
 {
-  int i = 0;
+    int i = 0;
   Id current_id = NO_ID;
   Id space_id = NO_ID;
 
-  space_id = game_get_player_location(game);
-
-  if (NO_ID == space_id)
-  {
+  Id loc = player_get_location(game->bob);
+  Space *s = game_get_space(game, loc);
+  Id norte = space_get_north(s);
+  if (norte == NO_ID) 
     return;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id)
-    {
-      current_id = space_get_north(game->spaces[i]);
-      if (current_id != NO_ID)
-      {
-        game_set_player_location(game, current_id);
-      }
-      return;
-    }
-  }
+  player_set_location(game->bob, norte);
 }
 void game_command_take(Game *game)
 {
   if(player_get_object(game->bob) != NULL){
     return ERROR;
   }
-  Id loc = player_get_space(game->bob);
+  Id loc = player_get_location(game->bob);
   Space *s = game_get_space(game, loc);
   Object *o = space_get_object(s);
   if( o == NULL)
@@ -348,58 +322,6 @@ void game_command_drop(Game *game)
 {
   
 }
-void game_command_right(Game *game)
-{
-    int i = 0;
-  Id current_id = NO_ID;
-  Id space_id = NO_ID;
 
-  space_id = game_get_player_location(game);
-
-  if (NO_ID == space_id)
-  {
-    return;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id)
-    {
-      current_id = space_get_east(game->spaces[i]);
-      if (current_id != NO_ID)
-      {
-        game_set_player_location(game, current_id);
-      }
-      return;
-    }
-  }
-}
-void game_command_left(Game *game)
-{
-    int i = 0;
-  Id current_id = NO_ID;
-  Id space_id = NO_ID;
-
-  space_id = game_get_player_location(game);
-
-  if (NO_ID == space_id)
-  {
-    return;
-  }
-
-  for (i = 0; i < MAX_SPACES && game->spaces[i] != NULL; i++)
-  {
-    current_id = space_get_id(game->spaces[i]);
-    if (current_id == space_id)
-    {
-      current_id = space_get_west(game->spaces[i]);
-      if (current_id != NO_ID)
-      {
-        game_set_player_location(game, current_id);
-      }
-      return;
-    }
-  }
 }
 

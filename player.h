@@ -43,7 +43,10 @@ STATUS player_destroy(Player* player);
   * @param space a pointer to the space  
   * @return the id of space
   */
-Id player_get_id(Player* player);
+Id player_get_location(Player* player);
+
+
+Id player_set_location(Player* player, Id id);
 
 /**
   * @brief It sets the name of a space
@@ -72,7 +75,7 @@ const char* player_get_name(Player* player, char* name);
   * @param value a boolean, specifying if in the space there is an object (TRUE) or not (FALSE)
   * @return OK, if everything goes well or ERROR if there was some mistake 
   */
-STATUS player_set_object(Player* player, BOOL value);
+STATUS player_set_object(Player* player, Object *obj);
 
 /**
   * @brief It gets whether the space has an object or not
@@ -81,7 +84,7 @@ STATUS player_set_object(Player* player, BOOL value);
   * @param space a pointer to the space
   * @return a boolean, specifying if in the space there is an object (TRUE) or not (FALSE)
   */
-BOOL player_get_object(Player* player);
+Object player_get_object(Player* player);
 
 /**
   * @brief It prints the space information

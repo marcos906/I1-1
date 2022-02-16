@@ -10,18 +10,17 @@
 #include <stdlib.h>
 #include <string.h>
 #include "player.h"
+#include "object.h"
 
 
 struct _Player {
   Id id;                    /*!< Id number of the space, it must be unique */
   char name[WORD_SIZE + 1]; /*!< Name of the space */
-  /*
-  ?? location
-  */
-  BOOL object;              /*!< Whether the space has an object or not */
+  Id location;
+  Object *obj;              /*!< Whether the space has an object or not */
 };
 
-Player* space_create(Id id){
+Player* player_create(Id id){
     
     Player *newPlayer = NULL;
 
@@ -39,7 +38,7 @@ Player* space_create(Id id){
   /*
   ?? location
   */
-  newPlayer->object = FALSE;
+  newPlayer->obj = FALSE;
   }
 
   return newPlayer;
@@ -56,11 +55,19 @@ STATUS player_destroy(Player* player){
   return OK;
 }
 
-Id player_get_id(Player* player){
+Id player_get_location(Player* player){
     if (!player) {
     return NO_ID;
   }
-  return player->id;
+  return player->location;
+}
+
+Id player_set_location(Player* player, Id id){
+  if (!player || id == NO_ID) {
+    return ERROR;
+  }
+  player->location = id;
+  return OK;
 }
 
 STATUS player_set_name(Player* player, char* name){
@@ -82,19 +89,19 @@ const char* player_get_name(Player* player, char* name){
   return OK;
 }
 
-STATUS player_set_object(Player* player, BOOL value){
+STATUS player_set_object(Player* player, Object *obj){
     if (!player) {
     return ERROR;
   }
-  player->object = value;
+  player->obj = obj;
   return OK;
 }
 
-BOOL player_get_object(Player* player){
+Object *player_get_object(Player* player){
     if (!player) {
     return FALSE;
   }
-  return player->object;
+  return player->obj;
 }
 
 STATUS player_print(Player* player){
