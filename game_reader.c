@@ -13,6 +13,11 @@
 #include <string.h>
 #include "game_reader.h"
 
+
+STATUS game_add_space(Game *game, Space *space);
+Id game_get_space_id_at(Game *game, int position);
+STATUS game_set_player_location(Game *game, Id id);
+STATUS game_set_object_location(Game *game, Id id);
 /*
     
     Mira si hay errores en la apertura del puntero y del archivo. Si no hay llama a otra 

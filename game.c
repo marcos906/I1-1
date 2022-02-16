@@ -13,7 +13,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "game.h"
-
+#include "player.h"
+#include "object.h"
 
 /**
    Private functions
@@ -331,7 +332,17 @@ void game_command_back(Game *game)
 }
 void game_command_take(Game *game)
 {
-  
+  if(player_get_object(game->bob) != NULL){
+    return ERROR;
+  }
+  Id loc = player_get_space(game->bob);
+  Space *s = game_get_space(game, loc);
+  Object *o = space_get_object(s);
+  if( o == NULL)
+    return ERROR;
+  player_set_object(game->bob, o);
+  space_set_object(s, NULL);
+
 }
 void game_command_drop(Game *game)
 {

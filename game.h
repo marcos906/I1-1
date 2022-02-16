@@ -14,12 +14,14 @@
 #include "command.h"
 #include "space.h"
 #include "types.h"
+#include "player.h"
 
 typedef struct _Game
 {
   Id player_location;
   Id object_location;
   Space *spaces[MAX_SPACES];
+  Player *bob;
   T_Command last_cmd;
 } Game;
 /*
